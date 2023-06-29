@@ -1,0 +1,552 @@
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap');
+:root {
+    --color-main: #6E00FF;
+    --color-secondary: #FFB100;
+    --bg-body:#f8f8fb;
+    --main-accent:#6307E2;
+    --main-text:#8492a6;
+    --success:#28A745;
+    --danger:#DC3545;
+    --shadow:rgba(0,0,0,0.15)0px 2px 8px;
+    --text-color:#DC3545;
+}
+*{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    color: var(--main-text);
+    background: var(--bg-body);
+    overflow-x: hidden;
+}
+#menu-toggle {
+    display: none;
+}
+.page-wrapper {
+    width:93%;
+    margin: auto; 
+    display: flex;
+}
+.page-wrapper::before {
+    content: "";
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    left: 0;
+    top:0;
+    background-color: var(--color-main);
+    z-index: -1;
+    border-radius: 0px 0px 0px 100px;
+}
+.sidebar {
+    width: 400px;
+    margin-left: 20px;
+
+}
+.brand {
+    height: 70px;
+    /* display: flex;
+    align-items: center; */
+    /* padding-left: 2rem; */
+
+}
+.brand h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+}
+.profile-card{
+    text-align: center; 
+    margin: 1rem 0rem;
+}
+.profile-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin:auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 1.8rem;
+    margin-bottom: 1.3rem;
+}
+.profile-info{
+    color: #fff;
+
+}
+.profile-info h2  {
+    margin-bottom: .3rem;
+    text-align: center;
+}
+.profile-info small {
+    font-size: 1rem;
+    text-align: center;
+}
+.profile-action {
+    margin: 1.7rem;
+}
+.profile-action a {
+
+}
+.btn {
+    border: none;
+    outline:none;
+    border-radius: 20px;
+    padding: .6rem 2rem;
+    display:flex;
+    align-items:center;
+}
+.btn-white{
+    background: #fff;
+} 
+.btn span{ 
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-right: .6rem;
+}
+.profile-icons {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3.8rem;
+}
+.profile-icons span{
+    display: inline-block;
+    color: #fff;
+    font-size: 1.65rem;
+}
+.sidebar-menu {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.8rem;
+}
+.menu-item a {
+    display:block;
+    width: 100%;
+    padding: 1rem 0rem;
+    border-radius: 10px;
+}
+.menu-item a span {
+    display: block;
+    text-align: center;
+    color: var(--main-text);
+    font-size: 1.1rem;
+}
+.menu-item a span:first-child {
+    
+    font-size: 2rem;
+    margin-bottom: .7rem;
+}
+.menu-item a.active {
+    
+    background: var(--color-main);
+}
+.menu-item a.active span {
+    color: #fff;
+}
+.sidebar-card {
+    padding: 1rem;
+    border-radius: 10px;
+    /* background: #bfbfbf; */
+    margin: 2rem;
+    color:#f8f8fb;
+    width: 800px
+    ;
+}
+.sidebar-card h3 {
+
+    /* margin-bottom: 1rem; */
+    font-size: 1.4rem;
+}
+.sidebar-card p {
+    line-height: 1.9rem;
+    /* margin-bottom: 1rem; */
+    font-size: .9rem;
+    text-align: justify;
+}
+
+.sidebar-card a {
+    text-align: center;
+    font-weight: 600;
+    color:var(--main-text);
+    display: block;
+    font-size: 1.1rem;
+}
+.main-content {
+    padding: 0 20px 0px 60px;
+    flex: 1;
+    margin: 4rem;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    border-bottom: 1px solid var(--main-text);
+}
+header label{
+    display: inline-block;
+    font-size: 1.4rem;
+}
+.head-icons {
+    display: flex;
+    align-items: center;
+}
+.head-icons span{
+    margin-right: 2rem;
+    display: inline-block;
+    font-size: 1,2rem;
+}
+.head-avatar {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    background: #6307E2;
+    color: #fff;
+}
+.head-avatar .avatar{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat:no-repeat;
+}
+.head-avatar span{
+    margin-right: 0;
+    padding: 0rem .5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.page-header {
+    color: #05299E;
+    margin: 1rem 0rem;
+}
+/* Start Today Card */
+.analytics {
+    display: grid;
+    grid-template-columns: 70% auto;
+    grid-gap: 2rem;
+    margin-top: 2rem;
+}
+.today-card {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    color: #DC3545;
+}
+.today-card img{
+    max-width: 125px;
+    padding: 20px;
+}
+.today-card .temp{
+    display: flex;
+    font-size: 60px;
+    font-weight: 500;
+}
+.today-card .temp .numb{
+    font-weight: 600;
+}
+.today-card .temp .deg{
+    font-size: 40px;
+    margin: 10px 5px 0 0;
+    display: block;
+}
+.today-card .weather{
+    font-size: 21px;
+    text-align: center;
+    margin: -5px 20px 15px;
+}
+.today-card .location{
+    display: flex;
+    align-items: center;
+    font-size: 21px;
+    margin-bottom: 30px;
+}
+.location i{
+    font-size: 22px;
+    margin-right: 5px;
+}
+.today-card .bottom-details{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #bfbfbf;
+    color: #E20785;
+}
+.bottom-details .column{
+    width: 100%;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.column i{
+    color: #0718E2;
+    font-size: 30px;
+    /* margin-right: 10px; */
+}
+.column.humidity{
+    border-left: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+}
+.column.pressure {
+    border-left: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+}
+
+.details .temp, .humidity span{
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: -3px;
+}
+.details .temp .deg{
+    margin:0;
+    pad: 0 2px 0 1px;
+    font-size: 17px;
+}
+.details p{
+    font-size: 14px;
+    margin-top: -6px;
+}
+/* End Today Card */
+
+/* Start Image Slider */
+
+.slider{
+    max-width: 700px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.slides { 
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.slides input{
+    display: none;
+
+}
+.slide{
+    /* width: 350px; */
+    /* height: 350px; */
+    width: 500px;
+    transition: 2s;
+}
+.slide img{
+    width: 400px;
+    height: 360px;;
+}
+
+/* Manual Navigation Start */
+.navigation-manual {
+    position: absolute;
+    width: 280px;
+    margin-top: -40px;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.manual-btn {
+
+    border: 2px solid var(--color-main);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+.manual-btn:not(:last-child){
+    margin-right: 10px;
+}
+.manual-btn:hover{
+    background: var(--color-main);
+}
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+#radio2:checked ~ .first{
+    margin-left: -110%;
+}
+#radio3:checked ~ .first{
+    margin-left: -220%;
+}
+#radio4:checked ~ .first{
+    margin-left: -330%;
+}
+/*
+Manual Navigation End */
+
+/* Automatic Navigation Start */
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    width: 280px;
+    justify-content: center;
+    margin-top: 325px;
+    margin-left: 50px;
+}
+.navigation-auto div{
+    border: 2px solid var(--color-main);
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+.navigation-auto div:not(:last-child){
+    margin-right: 10px;
+}
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background: var(--main-accent);
+}
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background: var(--main-accent);
+}
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background: var(--main-accent);
+}
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background: var(--main-accent);
+}
+/* Automatic navigation End */
+/* End Image Slider */
+
+/* Start 5 days Upcoming Weather */
+h2{
+    margin: 20px 10px;
+}
+.daily-forecast{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: .5rem;
+    margin-top: 1rem; 
+}
+
+.cards {
+    position: relative;
+    background: #f8f8fb;
+    border-radius: 20px;
+    box-shadow: 0 10px 6px -6px #777;
+}
+.cards::before{
+    content:"";
+    position: absolute;
+    height: 25%;
+    width: 100%;
+    background: #E4B363;
+    border-radius: 20px 20px 0 0;
+}
+.cards .cards-content{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+}
+.cards .images{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 3px;
+    /* background: #4b58ff  ; */
+    
+}
+.cards .images img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+.cards-body {
+    
+    margin: 5px;
+}
+.cards-body .cards-info {
+
+    display: flex;
+    font-size: 18px;
+    color:#05299E ;
+    padding: 5px;
+}
+.cards-body .cards-info i{
+
+    margin-right: 7px;
+}
+.cards-body .cards-info .date{
+    text-align: center;
+}
+/* End 5 days Upcoming Weather */
+
+/* Start Bar Chart */
+.bar-chart {
+    display: grid;
+    grid-template-columns: 50% auto;
+    grid-gap: 2rem;
+    margin-top: 2rem; 
+}
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    
+}
+.card-head {
+    font-size: 1rem;
+    color:#555;
+    font-weight: 600;
+    padding: .8rem 2rem;
+    border-bottom:1px solid #eee;
+
+}
+.card-body {
+    padding: 1.5rem 2rem;
+}
+.chart-wrapper {
+    padding-top:1rem 0rem;
+}
+/* End Bar Chart */
+
+@media only screen and (max-width: 1280px){
+    .sidebar {
+        display: none;
+    }
+    #menu-toggle:checked ~ .sidebar {
+        display: block;
+    }
+}
+@media only screen and (max-width: 980px){
+    .main-content {
+        padding: 0 20px ;
+        flex: 1;
+        
+    }
+    .analytics, .grid-2 {
+        grid-template-columns: 100%;
+    }
+}
+
+@media only screen and (max-width: 64px){
+
+    .page-wrapper::before {
+        min-width: 600px;
+    }
+
+}
+.text{
+    margin: 30px;
+    /* padding: 10px; */
+    color: #0718E2;
+}

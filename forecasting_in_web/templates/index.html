@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>
+            Weather Forecasting Using Data Analytics
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"> 
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        
+    </head>
+    <body>
+        <div class="page-wrapper">
+            <input type="checkbox" name="" id="menu-toggle">
+
+            <div class="sidebar">
+                <div class="brand">
+                    <h3>
+                        
+                        Myanmar Institute of Information Technology
+                    </h3>
+                </div>
+                <div class="profile-card">
+                    <!-- profile image -->
+                    <div class="profile-img" style="background-image:url({{ url_for('static', filename='logo.jpg')}}); background-size: cover; background-repeat: no-repeat;"></div>
+                    <!-- profile info -->
+                    <div class="profile-info">
+                        <h2>Weather Forecast</h2>
+                        <!-- <small>Result</small> -->
+                    </div>
+                    <!-- <div class="profile-action">
+                        <a href="" class="btn btn-white">
+                            <span class="las la-coins"></span>
+                           
+                        </a>    
+                    </div> -->
+                    <!-- profile-icons -->
+                    <!-- <div class="profile-icons">
+                        <span class="las la-user"></span>
+                        <span class="las la-comment-alt"></span>
+                        <span class="las la-file-invoice"></span>
+                    </div> -->
+                </div>
+                <!-- <div class="sidebar-menu">
+                    <div class="menu-item">
+                        <a href="" class="active">
+                            <span class="las la-home"></span>
+                            <span>Home</span>
+                        </a>
+                    </div> -->
+
+                    <!-- <div class="menu-item">
+                        <a href="">
+                            <span class="las la-project-diagram"></span>
+                            <span>Projects</span>
+                        </a>
+                    </div> -->
+                    
+                    <!-- <div class="menu-item">
+                        <a href="">
+                            <span class="las la-tasks"></span>
+                            <span>Task</span>
+                        </a>
+                    </div> -->
+                    
+                    <!-- <div class="menu-item">
+                        <a href="">
+                            <span class="las la-columns"></span>
+                            <span>Comment</span>
+                        </a>
+                    </div> -->
+                    
+                    <!-- <div class="menu-item">
+                        <a href="">
+                            <span class="las la-users-cog"></span>
+                            <span>Users</span>
+                        </a>
+                    </div> -->
+                    
+                    <!-- <div class="menu-item">
+                        <a href="">
+                            <span class="las la-user-ninja"></span>
+                            <span>Profile</span>
+                        </a>
+                    </div> -->
+                        
+                    <!-- <div class="menu-item">
+                        <a href="" class="active">
+                            <span class="las la-file-invoice"></span>
+                            <span>Invoices</span>
+                        </a>
+                    </div> -->
+
+                    <!-- <div class="menu-item">
+                        <a href="">
+                            <span class="las la-cogs"></span>
+                            <span>Widgets</span>
+                        </a>
+                    </div> -->
+            </div>
+                <div class="sidebar-card">
+                    <span style="font-size: 30px;">P</span><span style="font-size: 20px;">roject Description</span>
+                    <p>We offer comprehensive weather information for the current day, including temperature forecasts updated on an hourly basis for a 5-day period. Additionally, our system predicts the precipitation conditions for tomorrow, indicating whether it will be rain-free, experience light rain, moderate rain, or heavy rain. </p>
+                    <p>Our forecasting system utilizes a deep neural network that has been trained on five years of historical weather data for Mandalay, spanning from 2018 to 2022. The prediction system receives real-time weather data via an API as input.</p>
+                    <!-- <a href="" class="btn btn-block btn-white">More</a> -->
+             </div>
+        </div>
+
+            <div class="main-content">
+
+                <header>
+                    <label for="menu-toggle">
+                        <span class="las la-bars"></span>
+                    </label>
+
+                    <div class="head-icons">
+                        <!-- <span class="las la-search"></span> -->
+                        <span class="las la-comment-alt"></span>
+                        <span class="las la-bell"></span>
+                        <div class="head-avatar">
+                            <!-- <div class="avatar" style="background-image: url(logo.jpg);"></div> -->
+                            <img src="{{ url_for('static', filename='logo.jpg') }}" class="avatar">
+                            <span>MIIT</span>
+                        </div>
+                    </div>
+                </header>
+
+                <main>
+                    <div class="page-header">
+                        <h1>Weather Prediction</h1>
+                        <h3>How's the temperature today?</h3>
+                    </div>
+                    <!-- Start Today Card -->
+                    <div class="analytics">
+                        <div class="card today-card">
+                            <img src="{{ url_for('static', filename='icons/cloud.svg') }}" alt="Weather icon">
+                            <div class="temp">
+                                <span class="numb">{{avg_temp}}</span>
+                                <span class="deg">°</span>C
+                            </div>
+                            <div class="weather">{{today_date}}</div>
+                            <div class="location">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Mandalay, Myanmar</span>
+                            </div>
+                            <div class="bottom-details">
+                                <div class="column feels">
+                                    <i class="fa-solid fa-wind"></i>
+                                    <div class="details">
+                                        <div class="temp">
+                                            <span class="numb">{{avg_wind}}</span>
+                                            <span class="deg">km\h</span>
+                                        </div>
+                                        <p>Wind Speed</p>
+                                    </div>
+                                </div>
+                                <div class="column humidity">
+                                    <i class="fa-sharp fa-solid fa-droplet"></i>
+                                    <div class="details">
+                                        <span class="numb">{{avg_hum}}%</span>
+                                        <p>Humidity</p>
+                                    </div>
+                                </div>
+                                <div class="column pressure">
+                                    <!-- <i class="fa-solid fa-cloud-meatball"></i> -->
+                                    <i class="fa-solid fa-arrows-down-to-line"></i>
+                                    <div class="details">
+                                        <span class="numb">{{avg_p}}hPa</span>
+                                        <p>Pressure</p>
+                                    </div>
+                                </div>
+                                <div class="column rain">
+                                    <!-- <i class="fa-solid fa-cloud-meatball"></i> -->
+                                    <i class="fa-solid fa-umbrella"></i>
+                                    <div class="details">
+                                        <p>Tomorrow Rain</p>
+                                        <span class="numb">{{rain}}</span>    
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="card slider">
+                            <div class="slides">
+                                <!-- radio buttons start -->
+                                <input type="radio" name="radio-btn" id="radio1">
+                                <input type="radio" name="radio-btn" id="radio2">
+                                <input type="radio" name="radio-btn" id="radio3">
+                                <input type="radio" name="radio-btn" id="radio4">
+                                
+                                <!-- radio buttons end -->
+
+                                <!-- slide image start -->
+                                <div class="slide first">
+                                    <img src="{{ url_for('static', filename='icons/no8.jpg') }}" alt="mandalay">
+                                    
+                                </div>
+                                <div class="slide ">
+                                    <img src="{{ url_for('static', filename='icons/no5.png') }}" alt="mandalay">
+                                </div>
+                                <div class="slide">
+                                    <img src="{{ url_for('static', filename='icons/no6.png')}}" alt="mandalay">
+                                </div>
+                                <div class="slide">
+                                    <img src="{{ url_for('static', filename='icons/no7.png')}}" alt="mandalay">
+                                </div>
+                                
+                                <!-- slide image end -->
+
+                                <!-- auto nagvigation start -->
+                                <div class="navigation-auto">
+                                    <div class="auto-btn1"></div>
+                                    <div class="auto-btn2"></div>
+                                    <div class="auto-btn3"></div>
+                                    <div class="auto-btn4"></div>
+                                </div>
+                                <!-- auto navigation end -->
+                            </div>
+                            <!-- manual navigation start -->
+                            <div class="navigation-manual">
+                                <label for="radio1" class="manual-btn"></label>
+                                <label for="radio2" class="manual-btn"></label>
+                                <label for="radio3" class="manual-btn"></label>
+                                <label for="radio4" class="manual-btn"></label>
+                            </div>
+                            <!-- manual navigation end -->
+                        </div>
+                    </div>
+
+                    <!-- Start 5 days forecast -->
+                    <h2 class="text"> UPCOMING 5-DAY FORECAST </h2>
+
+                    <div class="daily-forecast">
+                        <div class="content">
+                            <div class="cards">
+                                <div class="cards-content">
+                                    <div class="images">
+                                        <img src="{{ d1_img }}" alt="weather icons">
+                                    </div>
+                                    <div class="cards-body">
+                                        <div class="cards-info">
+                                            <h3 class="date">{{d1}}</h3>
+                                        </div>
+                                        
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Max Temperature: </p>
+                                            <span><br>{{max_t1}}°C</span>
+                                        </div>
+
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Min Temperature: </p>
+                                            <span><br>{{min_t1}}°C</span>
+                                        </div>
+
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content">
+                            <div class="cards">
+                                <div class="cards-content">
+                                    <div class="images">
+                                        <img src="{{ d2_img }}" alt="weather icons">
+                                    </div>
+                                    <div class="cards-body">
+                                        <div class="cards-info">
+                                            <h3 class="date">{{d2}}</h3>
+                                        </div>
+                                        
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Max Temperature: </p>
+                                            <span><br>{{max_t2}}°C</span>
+                                        </div>
+
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Min Temperature: </p>
+                                            <span><br>{{min_t2}}°C</span>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="cards">
+                                <div class="cards-content">
+                                    <div class="images">
+                                        <img src="{{ d3_img }}" alt="weather icons">
+                                    </div>
+                                    <div class="cards-body">
+                                        <div class="cards-info">
+                                            <h3 class="date">{{d3}}</h3>
+                                        </div>
+                                        
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Max Temperature: </p>
+                                            <span><br>{{max_t3}}°C</span>
+                                        </div>
+
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Min Temperature: </p>
+                                            <span><br>{{min_t3}}°C</span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="cards">
+                                <div class="cards-content">
+                                    <div class="images">
+                                        <img src="{{ d4_img }}" alt="weather icons">
+                                    </div>
+                                    <div class="cards-body">
+                                        <div class="cards-info">
+                                            <h3 class="date">{{d4}}</h3>
+                                        </div>
+                                        
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Max Temperature: </p>
+                                            <span><br>{{max_t4}}°C</span>
+                                        </div>
+
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Min Temperature: </p>
+                                            <span><br>{{min_t4}}°C</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="cards">
+                                <div class="cards-content">
+                                    <div class="images">
+                                        <img src="{{ d5_img }}" alt="weather icons">
+                                    </div>
+                                    <div class="cards-body">
+                                        <div class="cards-info">
+                                            <h3 class="date">{{d5}}</h3>
+                                        </div>
+                                        
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Max Temperature: </p>
+                                            <span><br>{{max_t5}}°C</span>
+                                        </div>
+
+                                        <div class="cards-info">
+                                            <i class="fa-solid fa-temperature-three-quarters"></i>
+                                            <p>Min Temperature: </p>
+                                            <span><br>{{min_t5}}°C</span>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End 5 days forecast -->
+                    <div class="bar-chart">
+                        <div class="card engage-card">
+                            
+                            <div class="card-body">
+                                <div class="chart-wrapper">
+                                    <div id="chart1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card weather-card">
+                            
+                            <div class="card-body">
+                                <div class="chart-wrapper">
+                                    <div id="chart2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Js File -->
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="{{ url_for('static', filename='previous-graph.js')}}"></script>
+        <script  type="text/javascript" src="{{ url_for('static', filename='imageslide.js')}}"></script>
+        <script>
+        var options = {
+                          series: [
+                          {
+                            name: 'Mandalay Temperature',
+                            data: {{ previous_lis|safe }}   
+                             }
+                        ],
+                          chart: {
+                          height: 350,
+                          width: '100%',
+                          type: 'rangeArea',
+                          offsetY: 30,
+                          
+                        },
+                        stroke: {
+                          curve: 'smooth'
+                        },
+                        title: {
+                          text: 'Mandalay Temperature (Previous 30 days)'
+                        },
+                        markers: {
+                          hover: {
+                            sizeOffset: 5
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false,
+                          textAnchor: 'end',
+                        },
+                        xaxis: {
+                            type: 'datetime',
+                        
+                        },
+                        yaxis: {
+                            min:20,
+                          labels: {
+                            formatter: (val) => {
+                              return Math.round( val ) + '°C'
+                            }
+                          }
+                        }
+                        };
+                    
+        var chart = new ApexCharts(document.querySelector("#chart1"), options);
+        chart.render();
+        var options = {
+                  series: [
+                  {
+                    name: 'Mandalay Temperature',
+                    data: {{ future_lis|safe }}   
+                     }
+                ],
+                  chart: {
+                  height: 350,
+                  width: '100%',
+                  type: 'rangeArea',
+                  offsetY: 30,
+                  colors: ['#ffca21']
+                },
+                stroke: {
+                  curve: 'smooth'
+                },
+                title: {
+                  text: 'Mandalay Temperature (5 days prediction)'
+                },
+                markers: {
+                  hover: {
+                    sizeOffset: 5
+                  }
+                },
+                dataLabels: {
+                  enabled: false,
+                  textAnchor: 'end',
+                },
+                xaxis: {
+                    type: 'datetime',
+                
+                },
+                yaxis: {
+                    min:20,
+                  labels: {
+                    formatter: (val) => {
+                      return Math.round( val ) + '°C'
+                    }
+                  }
+                }
+                };
+            
+        var chart = new ApexCharts(document.querySelector("#chart2"), options);
+        chart.render();
+        </script>
+    </body>
+</html>
